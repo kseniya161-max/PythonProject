@@ -5,7 +5,7 @@ from src.product import Category
 
 @pytest.fixture
 def class_product():
-    return Product("banana", "Only big size", 150, 174.50 )
+    return Product("banana", "Only big size", 150, 174.50)
 
 
 def test_product(class_product):
@@ -17,13 +17,13 @@ def test_product(class_product):
 
 @pytest.fixture
 def class_category():
-    return Category("fruit", "import", ["product1","product2"])
+    return Category("fruit", "import", ["product1", "product2"])
 
 
 def test_category(class_category):
     assert class_category.name == "fruit"
     assert class_category.description == "import"
-    assert class_category.products == ["product1","product2"]
+    assert class_category.products == ["product1", "product2"]
 
 
 def test_product_count():
@@ -37,5 +37,3 @@ def test_category_count():
     Category.category_count = 0
     category = Category("fruit", "import", ["product1", "product2"])
     assert Category.category_count == 1
-
-
