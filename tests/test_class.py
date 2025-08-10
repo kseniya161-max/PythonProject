@@ -38,7 +38,7 @@ def test_product_count():
     product3 = Product("orange", "Argentina", 80, 95.00)
     category = Category("fruit", "import", [product1, product2, product3])
 
-    assert len(category.products) == 3  # Должно быть 3 продукта в категории
+    assert len(category.products) == 3
 
 
 def test_category_count():
