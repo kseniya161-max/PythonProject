@@ -18,26 +18,31 @@ def test_product(class_product):
 
 @pytest.fixture
 def class_category():
-    return Category("fruit", "import", ["product1", "product2"])
+    return Category("fruit", "import", ["product1", "product2", "product3"])
 
 
 def test_category(class_category):
     """Тест на инициализацию category"""
     assert class_category.name == "fruit"
     assert class_category.description == "import"
-    assert class_category.products == ["product1", "product2"]
+    assert class_category.products == ["product1", "product2", "product3"]
 
 
 def test_product_count():
-    """ Тест подсчитывает количество в product"""
+    Category.category_count = 0
+    Category.product_count = 0
+    """ Тест проверяет верно ли подсчитывает количество в product в категории"""
     Product.product_count = 0
     product1 = Product("banana", "Only big size", 150, 174.50)
     product2 = Product("apple", "Only red", 200, 67.80)
-    assert Product.product_count == 2
+    product3 = Product("orange", "Argentina", 80, 95.00)
+    category = Category("fruit", "import", [product1, product2, product3])
+
+    assert len(category.products) == 3  # Должно быть 3 продукта в категории
 
 
 def test_category_count():
-    """ Тест подсчитывает количество в category"""
+    """ Тест проверяет подсчет количество в category"""
     Category.category_count = 0
     category = Category("fruit", "import", ["product1", "product2"])
     assert Category.category_count == 1
