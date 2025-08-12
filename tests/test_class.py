@@ -57,3 +57,16 @@ def test_get_product_count():
     assert category.get_product_count() == 1
     category.add_product(product2)
     assert category.get_product_count() == 2
+
+
+def test_add_invalid_product():
+    category = Category("fruit", "import", [])
+    with pytest.raises(ValueError, match="Только объекты класса Product могут быть добавлены."):
+        category.add_product("not a product")
+
+
+def test_add_product_success():
+    product = Product("banana", "Only big size", 150, 174.50)
+    category = Category("fruit", "import", [])
+    category.add_product(product)
+    assert category._Category__products[0] == product
