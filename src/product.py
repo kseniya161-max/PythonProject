@@ -5,7 +5,25 @@ class Product:
         self.name = name
         self.description = description
         self.quantity = quantity
-        self.price = price
+        self.__price = price
+
+    @property
+    def price(self):
+        """Геттер для получения цены"""
+        return self.__price
+
+    @price.setter
+    def price(self, new_price: float):
+        """Сеттер для получения цены если она не меньше или равна нулю"""
+        if new_price <= 0:
+            print("Цена не должна быть нулевая или отрицательная")
+
+
+    @classmethod
+    def new_product(cls, name: str, description: str, quantity: int, price: float):
+        """Класс метод который создает новый продукт"""
+        return cls(name, description, quantity, price)
+product4 = Product.new_product("pear", "red", 520, 187 )
 
 
 class Category:
@@ -32,18 +50,12 @@ class Category:
         """Возвращает количество продуктов в категории"""
         return len(self.__products)
 
-
-""" Исполняемый код из product.py"""
-product1 = Product("banana", "Only big size", 150, 174.50)
-product2 = Product("apple", "Only red", 200, 67.80)
-product3 = Product("orange", "Argentina", 80, 95.00)
-
-
-category = Category("fruit", "import", [product1, product2, product3])
+    @property
+    def get_product_list(self):
+        """Геттер который возвращает продукты"""
+        return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity}" for product in self.__products])
 
 
-print("Новое количество продуктов в категории:", category.get_product_count())
-print("Общее количество продуктов:", Category.product_count)
-print("Количество категорий:", Category.category_count)
+
 
 
