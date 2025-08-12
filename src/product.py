@@ -19,12 +19,14 @@ class Category:
         self.description = description
         self.__products = products  # Тут хранятся product1, product1, product1
         Category.category_count += 1   # Добавляем +1 Категорию
+        Category.product_count += len(products)
 
 
     def add_product(self, product: Product):
         """Метод который добавляет приватный продукт в категорию"""
         self.__products.append(product)  # Тут добавляем атрибут product в приватные атрибуты
         Category.product_count += 1    # Уыеличиваем количество продуктов в категории product1, product1, product1
+
 
     def get_product_count(self):
         """Возвращает количество продуктов в категории"""
