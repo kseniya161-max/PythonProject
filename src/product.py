@@ -18,12 +18,13 @@ class Product:
         if new_price <= 0:
             print("Цена не должна быть нулевая или отрицательная")
 
-
     @classmethod
     def new_product(cls, name: str, description: str, quantity: int, price: float):
         """Класс метод который создает новый продукт"""
         return cls(name, description, quantity, price)
-product4 = Product.new_product("pear", "red", 520, 187 )
+
+
+product4 = Product.new_product("pear", "red", 520, 187)
 
 
 class Category:
@@ -39,12 +40,10 @@ class Category:
         Category.category_count += 1   # Добавляем +1 Категорию. отслеживает количество категорий
         Category.product_count += len(products)
 
-
     def add_product(self, product: Product):
         """Метод который добавляет приватный продукт в категорию"""
         self.__products.append(product)  # Тут добавляем атрибут product в приватные атрибуты
         Category.product_count += 1    # Уыеличиваем количество продуктов в категории product1, product1, product1
-
 
     def get_product_count(self):
         """Возвращает количество продуктов в категории"""
@@ -53,9 +52,5 @@ class Category:
     @property
     def get_product_list(self):
         """Геттер который возвращает продукты"""
-        return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity}" for product in self.__products])
-
-
-
-
-
+        return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity}"
+                          for product in self.__products])

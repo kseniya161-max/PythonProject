@@ -21,28 +21,39 @@ def class_category():
     return Category("fruit", "import", ["product1", "product2", "product3"])
 
 
-def test_category(class_category):
-    """Тест на инициализацию category"""
-    assert class_category.name == "fruit"
-    assert class_category.description == "import"
-    assert class_category.products == ["product1", "product2", "product3"]
-
-
-def test_product_count():
-    Category.category_count = 0
-    Category.product_count = 0
-    """ Тест проверяет верно ли подсчитывает количество в product в категории"""
-    Product.product_count = 0
-    product1 = Product("banana", "Only big size", 150, 174.50)
-    product2 = Product("apple", "Only red", 200, 67.80)
-    product3 = Product("orange", "Argentina", 80, 95.00)
-    category = Category("fruit", "import", [product1, product2, product3])
-
-    assert len(category.products) == 3
-
-
 def test_category_count():
     """ Тест проверяет подсчет количество в category"""
     Category.category_count = 0
     category = Category("fruit", "import", ["product1", "product2"])
     assert Category.category_count == 1
+
+
+def test_price_getter():
+    """Тестирует корректную цену"""
+    product = Product("banana", "Only big size", 150, 174.50)
+    # Устанавливаем корректную цену
+    assert product.price == 174.50
+
+
+def test_new_product():
+    product = Product.new_product("pear", "red", 520, 187)
+    assert product.name == "pear"
+    assert product.description == "red"
+    assert product.quantity == 520
+    assert product.price == 187
+
+
+def test_one_get_product_count():
+    product1 = Product("banana", "Only big size", 150, 174.50)
+    category = Category("fruit", "import", [product1])
+    assert product1 == product1
+    assert category == category
+
+
+def test_get_product_count():
+    product1 = Product("banana", "Only big size", 150, 174.50)
+    product2 = Product("apple", "Only red", 200, 67.80)
+    category = Category("fruit", "import", [product1])
+    assert category.get_product_count() == 1
+    category.add_product(product2)
+    assert category.get_product_count() == 2

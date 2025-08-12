@@ -16,7 +16,5 @@ product4 = Product.new_product("pear", "red", 520, 187)
 print(f"Название: {product4.name}, Описание: {product4.description}, "
       f"Количество на складе: {product4.quantity}, цена {product4.price} ")
 product4.price = 200  # new_price будет 200
-product4.price = -10  #new_price -10
+product4.price = -10  # new_price -10
 print(product4.price)  # Выведет 200
-
-
