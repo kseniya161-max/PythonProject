@@ -12,3 +12,5 @@ category = Category("fruit", "import", [product1, product2, product3])
 print("Новое количество продуктов в категории:", len(category.products))
 print("Общее количество продуктов:", Category.product_count)
 print("Количество категорий:", Category.category_count)
+
+
