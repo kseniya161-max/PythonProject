@@ -41,9 +41,12 @@ class Category:
         Category.product_count += len(products)
 
     def add_product(self, product: Product):
-        """Метод который добавляет приватный продукт в категорию"""
-        self.__products.append(product)  # Тут добавляем атрибут product в приватные атрибуты
-        Category.product_count += 1    # Уыеличиваем количество продуктов в категории product1, product1, product1
+            """Метод для добавления продукта в категорию"""
+            if isinstance(product, Product):
+                self.__products.append(product)
+                Category.product_count += 1
+            else:
+                raise ValueError("Только объекты класса Product могут быть добавлены.")
 
     def get_product_count(self):
         """Возвращает количество продуктов в категории"""
