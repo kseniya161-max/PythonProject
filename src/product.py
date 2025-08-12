@@ -18,7 +18,7 @@ class Category:
         self.name = name
         self.description = description
         self.__products = products  # Тут хранятся product1, product1, product1
-        Category.category_count += 1   # Добавляем +1 Категорию
+        Category.category_count += 1   # Добавляем +1 Категорию. отслеживает количество категорий
         Category.product_count += len(products)
 
 
