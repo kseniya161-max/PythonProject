@@ -19,12 +19,13 @@ class Product:
             print("Цена не должна быть нулевая или отрицательная")
 
     @classmethod
-    def new_product(cls, name: str, description: str, quantity: int, price: float):
-        """Класс метод который создает новый продукт"""
-        return cls(name, description, quantity, price)
-
-
-product4 = Product.new_product("pear", "red", 520, 187)
+    def new_product(cls, product_dict: dict):
+        """Класс метод который создает новый продукт на основе словаря"""
+        return cls(name=product_dict["name"],
+                   description=product_dict["description"],
+                   price=product_dict["price"],
+                   quantity=product_dict["quantity"],
+                   )
 
 
 class Category:
@@ -53,7 +54,7 @@ class Category:
         return len(self.__products)
 
     @property
-    def get_product_list(self):
+    def products(self):
         """Геттер который возвращает продукты"""
-        return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity}"
+        return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity} шт.\n"
                           for product in self.__products])
