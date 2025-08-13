@@ -36,11 +36,14 @@ def test_price_getter():
 
 
 def test_new_product():
-    product = Product.new_product("pear", "red", 520, 187)
-    assert product.name == "pear"
-    assert product.description == "red"
-    assert product.quantity == 520
-    assert product.price == 187
+    product_data = ({"name": "Samsung Galaxy S23 Ultra",
+                     "description": "256GB, Серый цвет, 200MP камера",
+                     "price": 180000.0, "quantity": 5})
+    product = Product.new_product(product_data)
+    assert product.name == "Samsung Galaxy S23 Ultra"
+    assert product.description == "256GB, Серый цвет, 200MP камера"
+    assert product.price == 180000.0
+    assert product.quantity == 5
 
 
 def test_one_get_product_count():
