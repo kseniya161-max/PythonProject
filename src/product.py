@@ -12,6 +12,11 @@ class Product:
         """Геттер для получения цены"""
         return self.__price
 
+    def __str__(self):
+        """Переопределяем строку методомом __str__"""
+        return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
+
+
     @price.setter
     def price(self, new_price: float):
         """Сеттер для получения цены если она не меньше или равна нулю"""
