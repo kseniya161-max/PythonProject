@@ -72,4 +72,4 @@ class Category:
     def __str__(self):
         """Переопределен метод __str__, который возвращает строку"""
         total_quantity = sum(product.quantity for product in self.__products)
-        return f"{self.name},  количество продуктов: {total_quantity} шт."
+        return f"{self.name},  Количество продуктов: {total_quantity} шт."
