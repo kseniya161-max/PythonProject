@@ -16,6 +16,11 @@ class Product:
         """Переопределяем строку методомом __str__"""
         return f"{self.name}, {self.price} руб. Остаток: {self.quantity} шт."
 
+    def __add__(self, other):
+        """Переопределяем строку методомом __add__"""
+        cost_self = self.quantity * self.price
+        cost_other = other.quantity * other.price
+        return cost_self + cost_other
 
     @price.setter
     def price(self, new_price: float):
@@ -63,7 +68,6 @@ class Category:
         """Геттер который возвращает продукты"""
         return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity} шт.\n"
                           for product in self.__products])
-
 
     def __str__(self):
         """Переопределен метод __str__, который возвращает строку"""
