@@ -86,10 +86,16 @@ def product_iphone():
 
 
 @pytest.fixture
-def category_smartphones(product_galaxy, product_iphone):
+def product_xiaomi():
+    return Product("Xiaomi Redmi Note 11", "1024GB, Синий", 31000.0, 14)
+
+
+@pytest.fixture
+def category_smartphones(product_galaxy, product_iphone, product_xiaomi):
     return Category("Смартфоны",
                     "Смартфоны, как средство не только коммуникации, "
-                    "но и получения дополнительных функций для удобства жизни", [product_galaxy, product_iphone])
+                    "но и получения дополнительных функций для удобства жизни",
+                    [product_galaxy, product_iphone, product_xiaomi])
 
 
 def test_adding_product(product_galaxy, product_iphone):
@@ -98,5 +104,5 @@ def test_adding_product(product_galaxy, product_iphone):
 
 
 def test_string_product(category_smartphones):
-    expected = "Смартфоны,  Количество продуктов: 390000.0 шт."
+    expected = "Смартфоны,  Количество продуктов: 421000.0 шт."
     assert str(category_smartphones) == expected
