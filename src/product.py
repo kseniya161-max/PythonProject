@@ -63,3 +63,9 @@ class Category:
         """Геттер который возвращает продукты"""
         return "\n".join([f"{product.name}, {product.price}руб. Остаток: {product.quantity} шт.\n"
                           for product in self.__products])
+
+
+    def __str__(self):
+        """Переопределен метод __str__, который возвращает строку"""
+        total_quantity = sum(product.quantity for product in self.__products)
+        return f"{self.name},  количество продуктов: {total_quantity} шт."
