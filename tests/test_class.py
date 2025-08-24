@@ -45,6 +45,24 @@ def test_new_product():
     assert product.price == 180000.0
     assert product.quantity == 5
 
+@pytest.fixture
+def product_galaxy():
+    return Product("Samsung Galaxy S23 Ultra", "256GB, Серый цвет, 200MP камера", 180000.0, 5)
+
+@pytest.fixture
+def product_iphone():
+    return Product("Iphone 15", "512GB, Gray space", 210000.0, 8)
+
+def test_adding_product(product_galaxy, product_iphone):
+    expected = product_galaxy.quantity * product_galaxy.price + product_iphone.quantity * product_iphone.price
+    assert (product_galaxy + product_iphone) == expected
+
+
+
+
+
+
+
 
 def test_one_get_product_count():
     product1 = Product("banana", "Only big size", 150, 174.50)
